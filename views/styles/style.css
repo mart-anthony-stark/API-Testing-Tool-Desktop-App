@@ -47,6 +47,12 @@ main {
   flex: 1;
   padding: 20px;
 }
+.request-container .main {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .request-container .main .input-cont {
   display: flex;
 }
@@ -63,6 +69,23 @@ main {
   background: var(--c-accent-alpha);
   cursor: pointer;
   color: var(--c-text);
+}
+.request-container .method {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+#request-method {
+  background: rgb(21, 20, 39);
+  color: white;
+  padding: 5px;
+}
+body > main > div.request-container > div > textarea {
+  resize: none;
+  height: 60vh;
+  padding: 10px;
+  color: var(--c-text);
+  background: var(--c-lighter);
 }
 .response-container {
   position: relative;
