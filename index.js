@@ -9,14 +9,15 @@ let mainWindow;
 app.on("ready", () => {
   // Create main window
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 800,
+    show: false,
     title: "API Testing Tool",
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
   });
+  mainWindow.maximize();
+  mainWindow.show();
 
   //   Load html to window
   mainWindow.loadURL(
