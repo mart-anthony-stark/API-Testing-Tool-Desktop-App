@@ -12,7 +12,32 @@
     <nav>
         <h1>API Testing tool</h1>
     </nav>
-    <h1>Hello</h1>
+    <main>
+        <div class="history-container">
+            <h2>History</h2>
+            <div id="history-list" class="requests">
+
+            </div>
+        </div>
+        <div class="request-container">
+            <h2>Request</h2>
+            <div class="main">
+                <div class="input-cont">
+                    <input type="text" id="url" placeholder="http://api/auth/">
+                    <button id="sendBtn">SEND</button>
+                </div>
+            </div>
+        </div>
+        <div class="response-container">
+            <div #response-loader class="loader"></div>
+            <div class="main">
+                <h2>Response</h2>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="./app.js"></script>
 </body>
 
 </html>
