@@ -5,8 +5,9 @@
 }
 :root {
   --c-primary: #191927;
-  --c-ligher: #222230;
+  --c-lighter: #222230;
   --c-accent: #14a5ae;
+  --c-accent-alpha: rgba(20, 164, 174, 0.678);
   --c-text: #f5fbfb;
 }
 @font-face {
@@ -25,4 +26,76 @@ nav {
   display: flex;
   align-items: center;
   border: 1px solid white;
+}
+main {
+  display: flex;
+  min-height: calc(100vh - 50px);
+}
+.history-container {
+  flex: 0.5;
+  padding: 20px;
+  border-right: 1px solid white;
+}
+#history-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.request-container {
+  flex: 1;
+  padding: 20px;
+}
+.request-container .main .input-cont {
+  display: flex;
+}
+.request-container .main input#url {
+  flex: 1;
+  padding: 10px;
+  background: var(--c-lighter);
+  border: none;
+  color: var(--c-text);
+}
+.request-container #sendBtn {
+  padding: 5px 10px;
+  border: none;
+  background: var(--c-accent-alpha);
+  cursor: pointer;
+  color: var(--c-text);
+}
+.response-container {
+  position: relative;
+  flex: 1.3;
+  padding: 10px;
+}
+.response-container .main {
+  background: var(--c-lighter);
+  padding: 10px;
+  border-radius: 10px;
+  height: 100%;
+  resize: horizontal;
+  overflow: auto;
+}
+body > main > div.response-container > div.loader {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid white;
+  border-bottom: 4px solid rgba(97, 97, 97, 0.527);
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  z-index: 5;
+  animation: rotate 0.5s infinite 0.5s;
+}
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
