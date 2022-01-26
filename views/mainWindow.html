@@ -22,10 +22,22 @@
         <div class="request-container">
             <h2>Request</h2>
             <div class="main">
+                <div class="method">
+                    <h3>Method</h3>
+                    <select id="request-method">
+                        <option selected>GET</option>
+                        <option>POST</option>
+                        <option>PUT</option>
+                        <option>PATCH</option>
+                        <option>DELETE</option>
+                    </select>
+                </div>
                 <div class="input-cont">
                     <input type="text" id="url" placeholder="http://api/auth/">
                     <button id="sendBtn">SEND</button>
                 </div>
+                <textarea placeholder="JSON BODY"></textarea>
+
             </div>
         </div>
         <div class="response-container">
