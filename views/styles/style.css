@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --c-primary: #191927;
+  --c-ligher: #222230;
+  --c-accent: #14a5ae;
+  --c-text: #f5fbfb;
+}
+@font-face {
+  font-family: Poppins;
+  src: url("./Poppins-Regular.otf");
+}
+body {
+  background: var(--c-primary);
+  color: var(--c-text);
+  scroll-behavior: smooth;
+  font-family: Poppins;
+}
+nav {
+  height: 50px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+}
