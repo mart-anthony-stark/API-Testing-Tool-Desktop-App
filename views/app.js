@@ -15,9 +15,10 @@ if (!history || history.length == 0) {
 }
 
 function validateUrl(value) {
-  return /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(
-    value
-  );
+  // return /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(
+  //   value
+  // );
+  return true;
 }
 
 sendBtn.addEventListener("click", (e) => {
@@ -31,7 +32,8 @@ sendBtn.addEventListener("click", (e) => {
   }
   let json;
   console.log(method);
-  if (method != "get") json = JSON.parse(bodyInput.value);
+  if (method != "get" && bodyInput.value.length !== 0)
+    json = JSON.parse(bodyInput.value);
 
   const req = {
     url: urlInput.value,
@@ -45,6 +47,7 @@ sendBtn.addEventListener("click", (e) => {
 
 const getData = async ({ method, url, body, headers }) => {
   loader.style.display = "block";
+  const resultDiv = document.querySelector("#Result");
 
   try {
     const res =
@@ -60,9 +63,17 @@ const getData = async ({ method, url, body, headers }) => {
             headers,
             credentials: "include",
           });
-    const data = await res.text();
-    console.log(res);
-    console.log(data);
+    const contentType = res.headers.get("content-type");
+    console.log(contentType);
+    const data =
+      contentType === "application/json; charset=utf-8"
+        ? await res.json()
+        : await res.text();
+
+    resultDiv.innerHTML =
+      contentType === "application/json; charset=utf-8"
+        ? JSON.stringify(data, null, 4)
+        : data;
   } catch (error) {
     console.log(error);
   }
