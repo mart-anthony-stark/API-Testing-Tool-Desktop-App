@@ -164,9 +164,10 @@ body > main > div.response-container > div.loader {
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
+  padding: 12px;
   border-top: none;
+  height: 70vh;
+  overflow: auto;
 }
 .tabcontent {
   animation: fadeEffect 1s; /* Fading effect takes 1 second */
