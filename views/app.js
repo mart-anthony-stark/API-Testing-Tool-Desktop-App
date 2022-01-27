@@ -36,9 +36,7 @@ const sendRequest = (e) => {
     if (method != "get" && bodyInput.value.length !== 0)
       json = JSON.parse(bodyInput.value);
   } catch (e) {
-    resultDiv.outerHTML = `
-      <div class="error">${e}</div>
-    `;
+    resultDiv.innerHTML = ``;
   }
 
   const req = {
