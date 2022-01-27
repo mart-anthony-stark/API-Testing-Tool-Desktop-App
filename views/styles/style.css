@@ -97,8 +97,9 @@ body > main > div.request-container > div > textarea {
   padding: 10px;
   border-radius: 10px;
   height: 100%;
-  resize: horizontal;
-  overflow: auto;
+  width: 600px;
+  /* resize: horizontal; */
+  /* overflow: auto; */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -185,4 +186,8 @@ body > main > div.response-container > div.loader {
   to {
     opacity: 1;
   }
+}
+#Result {
+  background: transparent;
+  color: white;
 }
