@@ -1,6 +1,8 @@
 const historyListCont = document.querySelector("#history-list");
 const urlInput = document.querySelector("#url");
 const sendBtn = document.querySelector("#sendBtn");
+const resultDiv = document.querySelector("#Result");
+
 const bodyInput = document.querySelector(
   "body > main > div.request-container > div > textarea"
 );
@@ -21,19 +23,23 @@ function validateUrl(value) {
   return true;
 }
 
-sendBtn.addEventListener("click", (e) => {
+const sendRequest = (e) => {
   const method = document.querySelector("#request-method").value.toLowerCase();
   const isValid = validateUrl(urlInput.value);
 
-  console.log(isValid);
   if (!isValid) {
     console.log("Invalid url");
     return;
   }
   let json;
-  console.log(method);
-  if (method != "get" && bodyInput.value.length !== 0)
-    json = JSON.parse(bodyInput.value);
+  try {
+    if (method != "get" && bodyInput.value.length !== 0)
+      json = JSON.parse(bodyInput.value);
+  } catch (e) {
+    resultDiv.outerHTML = `
+      <div class="error">${e}</div>
+    `;
+  }
 
   const req = {
     url: urlInput.value,
@@ -43,11 +49,10 @@ sendBtn.addEventListener("click", (e) => {
   };
 
   getData(req);
-});
+};
 
 const getData = async ({ method, url, body, headers }) => {
   loader.style.display = "block";
-  const resultDiv = document.querySelector("#Result");
 
   try {
     const res =
@@ -70,13 +75,20 @@ const getData = async ({ method, url, body, headers }) => {
         ? await res.json()
         : await res.text();
 
-    resultDiv.innerHTML =
+    const preview =
       contentType === "application/json; charset=utf-8"
         ? JSON.stringify(data, null, 4)
         : data;
+
+    resultDiv.innerHTML = preview;
   } catch (error) {
     console.log(error);
+    resultDiv.innerHTML = `
+      <div class="error">${error}</div>
+    `;
   }
 
   loader.style.display = "none";
 };
+
+sendBtn.addEventListener("click", sendRequest);
