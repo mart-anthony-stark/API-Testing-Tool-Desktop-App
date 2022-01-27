@@ -53,10 +53,12 @@ const getData = async ({ method, url, body, headers }) => {
             method,
             headers,
             body: JSON.stringify(body),
+            credentials: "include",
           })
         : await fetch(url, {
             method,
             headers,
+            credentials: "include",
           });
     const data = await res.text();
     console.log(res);
