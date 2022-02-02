@@ -193,6 +193,7 @@ body > main > div.response-container > div.loader {
 }
 /* Error overlay */
 .error-overlay {
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -209,6 +210,11 @@ body > main > div.response-container > div.loader {
 .error-overlay p.error {
   max-height: 80%;
   overflow: auto;
+}
+.error-overlay .btn {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 .error-overlay button {
   padding: 5px 30px;
