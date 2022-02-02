@@ -25,7 +25,10 @@ function validateUrl(value) {
 
 const sendRequest = (e) => {
   const method = document.querySelector("#request-method").value.toLowerCase();
-  const isValid = validateUrl(urlInput.value);
+  let isValid = validateUrl(urlInput.value);
+  if (urlInput.value.length === 0) {
+    isValid = false;
+  }
 
   if (!isValid) {
     console.log("Invalid url");
