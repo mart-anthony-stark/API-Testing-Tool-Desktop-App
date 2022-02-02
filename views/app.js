@@ -1,8 +1,11 @@
-const { validateUrl } = require("./helper");
+const { validateUrl, hideEl, showEl } = require("./helper");
+const { errorOverlay, errorTxt } = require("./error");
 const historyListCont = document.querySelector("#history-list");
 const urlInput = document.querySelector("#url");
 const sendBtn = document.querySelector("#sendBtn");
 const resultDiv = document.querySelector("#Result");
+
+showEl(errorOverlay);
 
 const bodyInput = document.querySelector(
   "body > main > div.request-container > div > textarea"
