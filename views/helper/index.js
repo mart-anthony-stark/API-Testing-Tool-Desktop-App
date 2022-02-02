@@ -5,4 +5,7 @@ module.exports = {
     // );
     return true;
   },
+  hideEl: (el) => {
+    el.style.display = "none";
+  },
 };
