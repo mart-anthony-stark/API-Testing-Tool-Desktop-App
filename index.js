@@ -42,7 +42,7 @@ app.on("ready", () => {
 // Create menu template
 const mainMenuTemplate = [
   {
-    label: "Aplication",
+    label: "Application",
     submenu: [
       {
         label: "Quit",
