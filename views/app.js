@@ -20,9 +20,9 @@ if (!history || history.length == 0) {
 const sendRequest = (e) => {
   const method = document.querySelector("#request-method").value.toLowerCase();
   let isValid = validateUrl(urlInput.value);
-  // if (urlInput.value.length === 0) {
-  //   isValid = false;
-  // }
+  if (urlInput.value.length === 0) {
+    isValid = false;
+  }
 
   if (!isValid) {
     console.log("Invalid url");
