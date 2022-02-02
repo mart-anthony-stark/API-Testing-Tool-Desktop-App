@@ -1,11 +1,9 @@
 const { validateUrl, hideEl, showEl } = require("./helper");
-const { errorOverlay, errorTxt } = require("./error");
+const { errorOverlay, setError } = require("./error");
 const historyListCont = document.querySelector("#history-list");
 const urlInput = document.querySelector("#url");
 const sendBtn = document.querySelector("#sendBtn");
 const resultDiv = document.querySelector("#Result");
-
-showEl(errorOverlay);
 
 const bodyInput = document.querySelector(
   "body > main > div.request-container > div > textarea"
@@ -28,7 +26,8 @@ const sendRequest = (e) => {
   }
 
   if (!isValid) {
-    console.log("Invalid url");
+    setError("Invalid Url");
+    showEl(errorOverlay);
     return;
   }
   let json;
