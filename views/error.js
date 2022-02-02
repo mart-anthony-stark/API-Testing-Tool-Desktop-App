@@ -6,4 +6,8 @@ const { hideEl } = require("./helper");
 okayBtn.addEventListener("click", () => {
   hideEl(errorOverlay);
 });
-module.exports = { errorOverlay, errorTxt };
+
+const setError = (err) => {
+    errorTxt.innerText = err
+}
+module.exports = { errorOverlay, setError };
